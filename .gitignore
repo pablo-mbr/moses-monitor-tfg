@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+Mosquitto/
+*.csv
+*.png
+*.log
+.idea/
+.vscode/
+.env
+Training Metrics/
