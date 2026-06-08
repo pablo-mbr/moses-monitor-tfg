@@ -4,7 +4,7 @@ Aplicación de escritorio para la aplicación de Early Stopping y optimización 
 
 ## Requisitos de hardware
 
-- Enchufe inteligente **TP-Link Tapo P110** conectado a la red 
+- Enchufe inteligente **TP-Link Tapo P110/115** conectado a la red 
 - Cuenta Tapo vinculada al dispositivo
 
 ## Requisitos de software
