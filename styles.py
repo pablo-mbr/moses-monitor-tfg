@@ -5,7 +5,7 @@ STYLE_SHEET = """
     QWidget#Header { background-color: #F4F7F6; border-bottom: 1px solid #E0E0E0; }
     QLabel { font-family: 'Segoe UI', sans-serif; font-size: 13px; }
     QLabel#ValorWatts { font-size: 42px; font-weight: 800; color: #2ECC71; }
-    QLabel#Titulo { font-size: 18px; font-weight: bold; color: #27AE60; }
+    QLabel#Titulo { font-size: 36px; font-weight: bold; color: #27AE60; }
     QLineEdit {
         background-color: white; border: 2px solid #DCDDE1; border-radius: 8px;
         padding: 5px; color: #2D3436; font-size: 14px; font-weight: bold;

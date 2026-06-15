@@ -22,7 +22,7 @@ class AppLayout(QMainWindow):
         header_layout = QGridLayout(self.header)
 
         # Título
-        header_layout.addWidget(QLabel("ECO", objectName="Titulo"), 0, 0)
+        header_layout.addWidget(QLabel("MOSES", objectName="Titulo"), 0, 0)
         self.label_watts = QLabel("0.0 W", objectName="ValorWatts")
         header_layout.addWidget(self.label_watts, 0, 3, Qt.AlignmentFlag.AlignRight)
 
