@@ -27,7 +27,7 @@ class ConfigWindow(QDialog):
         grid_rules.addWidget(self._input_inst, 0, 1)
         grid_rules.addWidget(Hint("inst_threshold"), 0, 2)
 
-        grid_rules.addWidget(QLabel("Umbral de Consumo Total (J):"), 1, 0)
+        grid_rules.addWidget(QLabel("Umbral de Consumo Energético (Ws):"), 1, 0)
         self._input_accum = QLineEdit("")
         grid_rules.addWidget(self._input_accum, 1, 1)
         grid_rules.addWidget(Hint("accum_threshold"), 1, 2)

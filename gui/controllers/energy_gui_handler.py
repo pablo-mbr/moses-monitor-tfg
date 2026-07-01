@@ -109,12 +109,12 @@ class EnergyGuiHandler:
             msg.show()
 
     def _on_consumption_exceeded(self, value: float):
-        Terminal().log(f"[ENERGÍA] Umbral de consumo total alcanzado: {value:.1f} J. Umbral: {self._model.accum_threshold} J", LogType.WARNING)
+        Terminal().log(f"[ENERGÍA] Umbral de consumo energético alcanzado: {value:.1f} Ws. Umbral: {self._model.accum_threshold} Ws", LogType.WARNING)
         if not self._blocked_alerts:
             self._blocked_alerts = True
             msg = QMessageBox(self._parent)
             msg.setIcon(QMessageBox.Icon.Warning)
-            msg.setWindowTitle("ALERTA CONSUMO TOTAL")
-            msg.setText(f"Umbral de consumo total alcanzado: {value:.1f} J.")
+            msg.setWindowTitle("ALERTA CONSUMO ENERGÉTICO")
+            msg.setText(f"Umbral de consumo energético alcanzado: {value:.1f} Ws.")
             msg.finished.connect(lambda _: setattr(self, '_blocked_alerts', False))
             msg.show()

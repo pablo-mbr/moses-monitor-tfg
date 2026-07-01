@@ -54,7 +54,7 @@ def load_consumption_csv(file_path: str) -> ConsumptionData:
             values=watts,
         ),
         "accum": SeriesData(
-            label="Consumo Acumulado (J)",
+            label="Consumo Energético (Ws)",
             timestamps=timestamps,
             values=accum,
         )
@@ -122,7 +122,7 @@ def load_training_metrics_csv(file_path: str) -> TrainingMetricsData:
 
 
 
-def buscar_timestamp_por_epoca(metrics_data: TrainingMetricsData, target_epoch: int, value_name: str = "Inertia", phase: str = "train") -> datetime | None:
+def search_timestamp_by_epoch(metrics_data: TrainingMetricsData, target_epoch: int, value_name: str = "Inertia", phase: str = "train") -> datetime | None:
     if value_name not in metrics_data.series or phase not in metrics_data.series[value_name]:
         return None
     
@@ -136,7 +136,7 @@ def buscar_timestamp_por_epoca(metrics_data: TrainingMetricsData, target_epoch: 
     return None
 
 
-def buscar_epoca_por_timestamp(metrics_data: TrainingMetricsData, target_ts: datetime, value_name: str = "Inertia", phase: str = "train") -> tuple[int, float, datetime] | None:
+def search_epoch_by_timestamp(metrics_data: TrainingMetricsData, target_ts: datetime, value_name: str = "Inertia", phase: str = "train") -> tuple[int, float, datetime] | None:
     if value_name not in metrics_data.series or phase not in metrics_data.series[value_name]:
         return None
     

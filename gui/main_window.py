@@ -19,6 +19,7 @@ class MainWindow(AppLayout):
 
     def __init__(self, inst_threshold, accum_threshold, baseline, data_queue):
         super().__init__()
+        self.setWindowTitle("MOSES-Alert")
         self._energy_model = EnergyModel(inst_threshold, accum_threshold, baseline)
         self._results_model = MetricsModel()
         self._data_queue = data_queue
@@ -29,7 +30,7 @@ class MainWindow(AppLayout):
         self._tapo_stop_event = None
         self._energy = EnergyGuiHandler(
             self._energy_model, self, self.stack, self.btn_toggle,
-            self.graph_inst, self.graph_accum,
+            self.graph_power, self.graph_energy,
             self.label_watts, self.input_inst_threshold, self.input_accum_threshold, self.input_baseline
         )
         self._metrics = MetricsGuiHandler(

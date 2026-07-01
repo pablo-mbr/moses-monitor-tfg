@@ -22,14 +22,14 @@ class AppLayout(QMainWindow):
         header_layout = QGridLayout(self.header)
 
         # Título
-        header_layout.addWidget(QLabel("MOSES", objectName="Titulo"), 0, 0)
+        header_layout.addWidget(QLabel("MOSES-Alert", objectName="Titulo"), 0, 0)
         self.label_watts = QLabel("0.0 W", objectName="ValorWatts")
         header_layout.addWidget(self.label_watts, 0, 3, Qt.AlignmentFlag.AlignRight)
 
         # 1. Grupo Monitorización
         self.group_monit = QGroupBox("Monitorización")
         layout_monit = QGridLayout(self.group_monit)
-        self.btn_toggle = QPushButton("Vista: Acumulado", objectName="BtnToggle")
+        self.btn_toggle = QPushButton("Vista: Consumo", objectName="BtnToggle")
         self.btn_training_metrics = QPushButton("Vista: Resultados", objectName="BtnAccuracy")
         self.btn_reset = QPushButton("Resetear")
 
@@ -66,7 +66,7 @@ class AppLayout(QMainWindow):
         self.early_stopping_config_dialog = EarlyStoppingConfigWindow()
 
         layout_data.addWidget(QLabel("Potencia (W)"), 0, 0)
-        layout_data.addWidget(QLabel("Consumo Total (J)"), 0, 1)
+        layout_data.addWidget(QLabel("Consumo Energético (Ws)"), 0, 1)
         layout_data.addWidget(QLabel("Baseline (W)"), 0, 2)
         layout_data.addWidget(self.input_inst_threshold, 1, 0)
         layout_data.addWidget(self.input_accum_threshold, 1, 1)
@@ -77,7 +77,7 @@ class AppLayout(QMainWindow):
         legend_layout = QVBoxLayout(legend_widget)
         legend_layout.setContentsMargins(4, 0, 0, 0)
         legend_layout.setSpacing(2)
-        for color, label in [(RED, "Potencia"), (PURPLE, "Consumo Total"), (ORANGE, "Baseline")]:
+        for color, label in [(RED, "Potencia"), (PURPLE, "Consumo Energético"), (ORANGE, "Baseline")]:
             row = QWidget()
             row_layout = QHBoxLayout(row)
             row_layout.setContentsMargins(0, 0, 0, 0)
@@ -100,8 +100,8 @@ class AppLayout(QMainWindow):
 
         # GRÁFICAS
         self.stack = QStackedWidget()
-        self.graph_inst = ConsumptionGraph(GREEN, (46, 204, 113, 40), model.inst_threshold, model.baseline)
-        self.graph_accum = ConsumptionGraph(PURPLE, (142, 68, 173, 40), model.accum_threshold, threshold_color=PURPLE)
+        self.graph_power = ConsumptionGraph(GREEN, (46, 204, 113, 40), model.inst_threshold, model.baseline)
+        self.graph_energy = ConsumptionGraph(PURPLE, (142, 68, 173, 40), model.accum_threshold, threshold_color=PURPLE, mode="energy")
 
         # CONTENEDOR DE ENTRENAMIENTO
         self.training_container = QWidget()
@@ -122,8 +122,8 @@ class AppLayout(QMainWindow):
         training_layout.addWidget(self.graph_training_metrics)
         training_layout.addWidget(self.training_controls)
 
-        self.stack.addWidget(self.graph_inst)
-        self.stack.addWidget(self.graph_accum)
+        self.stack.addWidget(self.graph_power)
+        self.stack.addWidget(self.graph_energy)
         self.stack.addWidget(self.training_container)
 
         # --- TERMINAL ---
